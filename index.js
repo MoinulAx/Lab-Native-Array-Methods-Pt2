@@ -59,8 +59,29 @@ console.log(categorizeSongsByRuntime(exampleSongData))
  * @param {Object[]} songs - An array of songs.
  * @returns {string} The name of the album with the most songs.
  */
-function findAlbumWithMostSongs(songs) {}
+function findAlbumWithMostSongs(songs) {
+  const arrOfAlbumAmount  = songs.reduce((acc, song) => {
+    
+    acc[song.album] = (acc[song.album] || 0) + 1;
+    
+    return acc;
+  }, {});
 
+  let bestAlbumCount = 0;
+  let expectedAlbum = '';
+
+  for (const album in arrOfAlbumAmount ) {
+    
+    if (arrOfAlbumAmount [album] > bestAlbumCount) {
+      
+      bestAlbumCount = arrOfAlbumAmount [album];
+      expectedAlbum = album;
+
+    }
+  }
+  return expectedAlbum
+}
+console.log(findAlbumWithMostSongs(exampleSongData))
 // #5
 /**
  * Returns details of the first song in a specific album.
