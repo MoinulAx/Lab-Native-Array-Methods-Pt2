@@ -87,8 +87,9 @@ function categorizeSongsByRuntime(songs) {
  * @returns {Object|null} First song object in the album or null.
  */
 function getFirstSongInAlbum(songs, albumName) {
-    
+   let arr = songs.find(song => song.album === albumName)
 
+   return arr 
 
 
 
@@ -101,7 +102,10 @@ console.log(getFirstSongInAlbum(exampleSongData,'Berlin Tsukin'))
  * @param {number} runtime - The runtime to check against in seconds.
  * @returns {boolean} True if there is at least one song longer than the runtime.
  */
-function isThereLongSong(songs, runtime) {}
+function isThereLongSong(songs, runtime) {
+  let arr = songs.some(songElement => songElement.runtimeInSeconds > runtime)
+  return arr
+}
 
 // #7
 /**
@@ -109,7 +113,10 @@ function isThereLongSong(songs, runtime) {}
  * @param {Object[]} songs - An array of songs.
  * @returns {Object[]} Array of song objects with runtime in minutes.
  */
-function getSongsWithDurationInMinutes(songs) {}
+function getSongsWithDurationInMinutes(songs) {
+    let arr 
+
+}
 
 // #8
 /**
