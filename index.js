@@ -17,7 +17,7 @@ function getSortedTitles(songs) {
   return songs.map(element => element.title).sort()
 
 }
-console.log(getSortedTitles(exampleSongData))
+// console.log(getSortedTitles(exampleSongData))
 // #2
 /**
  * Returns the titles of all songs from a specified album.
@@ -38,7 +38,7 @@ function getSongsFromAlbum(songs, albumName) {
 
 }
 
-console.log(getSongsFromAlbum(exampleSongData,"Bi-To Te-Pu"))
+// console.log(getSongsFromAlbum(exampleSongData,"Bi-To Te-Pu"))
 
 // #3 
 /**
@@ -52,36 +52,33 @@ function categorizeSongsByRuntime(songs) {
   mediumSongs: songs.filter(song => song.runtimeInSeconds >= 180 && song.runtimeInSeconds <= 300).length,
   longSongs: songs.filter(song => song.runtimeInSeconds > 300).length}
 }
-console.log(categorizeSongsByRuntime(exampleSongData))
+// console.log(categorizeSongsByRuntime(exampleSongData))
 // #4
 /**
  * Finds the album with the highest number of songs.
  * @param {Object[]} songs - An array of songs.
  * @returns {string} The name of the album with the most songs.
  */
-function findAlbumWithMostSongs(songs) {
-  const arrOfAlbumAmount  = songs.reduce((acc, song) => {
-    
-    acc[song.album] = (acc[song.album] || 0) + 1;
-    
-    return acc;
-  }, {});
-
-  let bestAlbumCount = 0;
-  let expectedAlbum = '';
-
-  for (const album in arrOfAlbumAmount ) {
-    
-    if (arrOfAlbumAmount [album] > bestAlbumCount) {
-      
-      bestAlbumCount = arrOfAlbumAmount [album];
-      expectedAlbum = album;
-
-    }
+  function findAlbumWithMostSongs(songs) {
+    const arrOfAlbumAmount = songs.reduce((acc, song) => {
+      acc[song.album] = (acc[song.album] || 0) + 1;
+      return acc;
+    }, {});
+  
+    let [expectedAlbum, bestAlbumCount] = ['', 0];
+  
+    Object.entries(arrOfAlbumAmount).forEach(([album, count]) => {
+      if (count > bestAlbumCount) {
+        bestAlbumCount = count;
+        expectedAlbum = album;
+      }
+    });
+  
+    return expectedAlbum;
   }
-  return expectedAlbum
-}
-console.log(findAlbumWithMostSongs(exampleSongData))
+  
+
+// console.log(findAlbumWithMostSongs(exampleSongData))
 // #5
 /**
  * Returns details of the first song in a specific album.
@@ -89,8 +86,14 @@ console.log(findAlbumWithMostSongs(exampleSongData))
  * @param {string} albumName - Name of the album.
  * @returns {Object|null} First song object in the album or null.
  */
-function getFirstSongInAlbum(songs, albumName) {}
+function getFirstSongInAlbum(songs, albumName) {
+    
 
+
+
+
+}
+console.log(getFirstSongInAlbum(exampleSongData,'Berlin Tsukin'))
 // #6
 /**
  * Checks if there is at least one song longer than a specified runtime.
