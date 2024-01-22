@@ -159,7 +159,7 @@ describe("getSongsWithDurationInMinutes()", () => {
     result.forEach((song, index) => {
       const expectedDuration = songs[index].runtimeInSeconds / 60;
       expect(song.durationInMinutes).toBeCloseTo(expectedDuration);
-    });
+    })
   });
 });
 
